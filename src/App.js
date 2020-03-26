@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import "./App.css";
+import classes from "./App.css";
 import Person from "./Person/Person";
-import person from "./Person/Person";
+import styled from "styled-components";
 
 const app = props => {
+  let btnClass = [classes.button];
+  
   const [personsState, setPersonsState] = useState({
     persons: [
       { id: "dsadas", name: "Max", age: 28 },
@@ -12,7 +14,7 @@ const app = props => {
     ]
   });
 
-  const [otherState, setOtherState] = useState("some other state");
+  // const [otherState, setOtherState] = useState("some other state");
   const [showPersons, setShowPersons] = useState(false);
 
   const nameChangeHandler = (event, id) => {
@@ -36,13 +38,10 @@ const app = props => {
 
   const togglePersonsHandler = () => {
     const doesShow = !showPersons;
-    console.log(showPersons);
-    console.log(doesShow);
     setShowPersons(doesShow);
   };
 
   const deletePersonHandler = personIndex => {
-    // const persons = personsState.persons.slice()
     const persons = [...personsState.persons];
     persons.splice(personIndex, 1);
     setPersonsState({ persons: persons });
@@ -66,17 +65,34 @@ const app = props => {
         })}
       </div>
     );
+    // style.backgroundColor = "red";
+    // style[":hover"] = {
+    //   backgroundColor: "salmon",
+    //   color: "black"
+    // };
+
+    btnClass.push(classes.Red)
+  }
+
+  const assignedClasses = [];
+  if (personsState.persons.length <= 2) {
+    assignedClasses.push("red");
+  }
+
+  if (personsState.persons.length <= 1) {
+    assignedClasses.push("bold");
   }
 
   return (
-    <div className="App">
+    <div className={classes.App}>
       <h1>I'm a react app</h1>
-      <p>This is really working!</p>
-      <button onClick={togglePersonsHandler}>Toggle Persons</button>
+      <p className={assignedClasses.join(" ")}>This is really working!</p>
+      <button className={btnClass.join(' ')} onClick={togglePersonsHandler}>
+        Toggle Persons
+      </button>
       {persons}
     </div>
   );
-  // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'))
 };
 
 export default app;
