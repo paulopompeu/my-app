@@ -8,7 +8,7 @@ const app = props => {
       { name: "Max", age: 28 },
       { name: "Manu", age: 29 },
       { name: "Stephanie", age: 26 }
-    ],
+    ]
   });
 
   const [otherState, setOtherState] = useState("some other state");
@@ -35,14 +35,9 @@ const app = props => {
   };
 
   const togglePersonsHandler = () => {
-    // const doesShow = persons;
-    // doesShow.showPersons = !persons.showPersons;
     const doesShow = !showPersons;
-    // doesShow.showPersons = !personsState.showPersons
-    // console.log(personsState.showPersons)
-    // const doesShow = !personsState.showPersons;
-    console.log(showPersons)
-    console.log(doesShow)
+    console.log(showPersons);
+    console.log(doesShow);
     setShowPersons(doesShow);
   };
 
