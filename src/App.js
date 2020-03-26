@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import classes from "./App.css";
 import Person from "./Person/Person";
-import styled from "styled-components";
 
 const app = props => {
   let btnClass = [classes.button];
